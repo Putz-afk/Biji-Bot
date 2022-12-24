@@ -2,10 +2,14 @@ import asyncio
 import os
 import discord
 from discord.ext import commands
+import json
 
 # Get configuration
-token = "NzY5ODAwNDI2NzY5MzUwNjg3.GC6tIU.2ihHsj5_pY4ICoKH0wk_qkWX1IGApOOjsV2bmA" # Token bot testing
-prefix = '~'
+# Get configuration.json
+with open("config.json", "r") as config:
+    data = json.load(config)
+    token = data["TOKEN"]
+    prefix = data["PREFIX"]
 intents = discord.Intents.all()
 
 bot = commands.Bot(command_prefix=prefix, intents=intents)
